@@ -20,7 +20,7 @@ html {
 #header {
   width: 100%;
   height: 50vh;
-  background-image: url(ocean.jpg);
+  background-image: url(https://cdn.glitch.global/7f386206-494d-4a16-bf8b-8ac70af90ac7/ocean.jpg?v=1717631123491);
   background-size: cover;
   background-position: center;
 }
@@ -470,7 +470,7 @@ nav ul li a:hover::after {
   #header {
   width: 100%;
   height: 50vh;
-  background-image: url(ocean.jpg);
+  background-image: url(https://cdn.glitch.global/7f386206-494d-4a16-bf8b-8ac70af90ac7/ocean.jpg?v=1717631123491);
   background-size: 200% auto;
   background-position: center;
   background-repeat: no-repeat;
