@@ -1,34 +1,150 @@
-/*
-  This is your site JavaScript code - you can add interactivity!
-*/
+document.addEventListener('DOMContentLoaded', function() {
 
-// Print a message in the browser's dev tools console each time the page loads
-// Use your menus or right-click / control-click and choose "Inspect" > "Console"
-console.log("Hello 🌎");
+    const images = document.querySelectorAll('.img2 img');
 
-/* 
-Make the "Click me!" button move when the visitor clicks it:
-- First add the button to the page by following the steps in the TODO 🚧
-*/
-const btn = document.querySelector("button"); // Get the button from the page
-if (btn) { // Detect clicks on the button
-  btn.onclick = function () {
-    // The 'dipped' class in style.css changes the appearance on click
-    btn.classList.toggle("dipped");
-  };
-}
+    images.forEach(image => {
+        image.addEventListener('mouseover', () => {
+            image.style.transform = 'scale(1.1)';
+        });
+
+        image.addEventListener('mouseout', () => {
+            image.style.transform = 'scale(1)';
+        });
+
+        image.style.transition = 'transform 0.3s ease';
+    });
+
+ 
+    function handleClick() {
+        const calendar = document.getElementById('calendar-container');
+        const overlay = document.getElementById('overlay');
+        const contentWrapper = document.querySelector('.content-wrapper');
+
+        if (calendar.style.display === 'none' || calendar.style.display === '') {
+            calendar.style.display = 'block';
+            overlay.style.display = 'block';
+            if (contentWrapper) {
+                contentWrapper.classList.add('blur');
+            }
+            document.addEventListener('click', handleOutsideClick);
+        } else {
+            closeCalendar();
+        }
+    }
+
+  
+    function closeCalendar() {
+        const calendar = document.getElementById('calendar-container');
+        const overlay = document.getElementById('overlay');
+        const contentWrapper = document.querySelector('.content-wrapper');
+
+        calendar.style.display = 'none';
+        overlay.style.display = 'none';
+        if (contentWrapper) {
+            contentWrapper.classList.remove('blur');
+        }
+        document.removeEventListener('click', handleOutsideClick);
+    }
 
 
-// ----- GLITCH STARTER PROJECT HELPER CODE -----
+    function handleOutsideClick(event) {
+        const calendar = document.getElementById('calendar-container');
+        if (!calendar.contains(event.target) && event.target !== document.querySelector('.click-here-button')) {
+            closeCalendar();
+        }
+    }
 
-// Open file when the link in the preview is clicked
-let goto = (file, line) => {
-  window.parent.postMessage(
-    { type: "glitch/go-to-line", payload: { filePath: file, line: line } }, "*"
-  );
-};
-// Get the file opening button from its class name
-const filer = document.querySelectorAll(".fileopener");
-filer.forEach((f) => {
-  f.onclick = () => { goto(f.dataset.file, f.dataset.line); };
+ 
+    const clickHereButton = document.querySelector('.click-here-button');
+    if (clickHereButton) {
+        clickHereButton.addEventListener('click', function(event) {
+            event.stopPropagation(); 
+            handleClick();
+        });
+    }
+
+   
+    const calendarContainer = document.getElementById('calendar-container');
+    if (calendarContainer) {
+        calendarContainer.addEventListener('click', function(event) {
+            event.stopPropagation(); 
+        });
+    }
+
+ 
+    const tabLinks = document.querySelectorAll('.tab-links');
+    const tabContents = document.querySelectorAll('.tab-contents');
+
+    tabLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            tabLinks.forEach(tabLink => {
+                tabLink.classList.remove('active-link');
+            });
+            tabContents.forEach(content => {
+                content.style.display = 'none';
+            });
+
+            this.classList.add('active-link');
+            const tabContentId = this.textContent.toLowerCase().replace(/\s+/g, '-'); 
+            const tabContent = document.getElementById(tabContentId);
+            if (tabContent) {
+                tabContent.style.display = 'block';
+            }
+        });
+    });
+
+    document.querySelectorAll('.amenities-list div').forEach(service => {
+        service.addEventListener('mouseenter', () => {
+            gsap.to(service, {
+                background: 'linear-gradient(270deg, #ffeac2 10%, #91eff6 100%)',
+                y: -20,
+                duration: 0.8
+            });
+        });
+
+        service.addEventListener('mouseleave', () => {
+            gsap.to(service, {
+                background: '#e4ebcf',
+                y: 0, 
+                duration: 0.8
+            });
+        });
+    });
+
+    const burger = document.getElementById('burger');
+    const navLinks = document.getElementById('nav-links');
+    const closeBtn = document.querySelector('.close');
+
+    burger.addEventListener('click', () => {
+        burger.classList.toggle('active');
+        navLinks.classList.toggle('active');
+    });
+
+    document.body.addEventListener('click', (event) => {
+        if (!navLinks.contains(event.target) && !burger.contains(event.target)) {
+            burger.classList.remove('active');
+            navLinks.classList.remove('active');
+        }
+    });
+
+    if (closeBtn) {
+        closeBtn.addEventListener('click', () => {
+            burger.classList.remove('active');
+            navLinks.classList.remove('active');
+        });
+    }
+
+    gsap.from(".nav-links", {
+        opacity: 0,
+        duration: 9,
+        ease: "power1.out",
+        yoyo: true
+    });
+
+    gsap.from(".name", {
+        opacity: 0,
+        duration: 9,
+        ease: "power1.out",
+        yoyo: true
+    });
 });
