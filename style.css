@@ -30,6 +30,10 @@ html {
   margin-top: 3%;
   font-size: 30px;
 }
+.header-text h1{
+  font-family: "Dancing Script", cursive; 
+}
+
 
 .header-text h1 {
   font-size: 60px;
@@ -151,6 +155,7 @@ nav {
   color: #003366;
   text-decoration: none;
   font-size: 30px;
+  font-family: "Dancing Script", cursive;
 }
 
 nav ul li {
