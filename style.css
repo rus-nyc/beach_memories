@@ -212,6 +212,8 @@ nav ul li a:hover::after {
   font-size: 30px;
   font-weight: 600;
   color: #003366;
+  text-align:center;
+  margin-top:-5%;
 }
 
 .tab-titles {
@@ -456,6 +458,7 @@ nav ul li a:hover::after {
   
   .one {
   font-size: 25px;
+    margin-top:-17%;
   }
   
   .about-col-1, .about-col-2 {
@@ -483,7 +486,7 @@ nav ul li a:hover::after {
   text-align: center;
   }
   
-  .contact-left a, .contact-left p {
+  .contact-left a, .contact-left p, .copyright {
   text-align: center;
   }
   }
