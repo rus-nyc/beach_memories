@@ -388,6 +388,36 @@ nav ul li a:hover::after {
   justify-content: center;
   text-align: center;
   }
+  .carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: transparent;
+    background-image: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #003366; 
+}
+
+.carousel-control-prev-icon:after,
+.carousel-control-next-icon:after {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-size: 100%;
+}
+
+.carousel-control-prev-icon:after {
+    color: #91eff6; 
+    font-size: 20px;
+    line-height: 20px;
+}
+
+.carousel-control-next-icon:after {
+    color:#91eff6; 
+    font-size: 20px;
+    line-height: 20px;
+}
   
   @media screen and (max-width: 800px) {
   .burger {
