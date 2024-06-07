@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-   
+    // Function to toggle calendar display
     function handleClick() {
         const calendar = document.getElementById('calendar-container');
         const overlay = document.getElementById('overlay');
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-   
+    // Function to close calendar
     function closeCalendar() {
         const calendar = document.getElementById('calendar-container');
         const overlay = document.getElementById('overlay');
@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.removeEventListener('click', handleOutsideClick);
     }
 
-   
+    // Function to handle clicks outside the calendar
     function handleOutsideClick(event) {
         const calendar = document.getElementById('calendar-container');
         if (!calendar.contains(event.target) && event.target !== document.querySelector('.click-here-button')) {
@@ -39,24 +39,24 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    
+    // Assign handleClick to the button
     const clickHereButton = document.querySelector('.click-here-button');
     if (clickHereButton) {
         clickHereButton.addEventListener('click', function(event) {
-            event.stopPropagation();
+            event.stopPropagation(); // Prevent this click from triggering the outside click handler
             handleClick();
         });
     }
 
-   
+    // Prevent closing when clicking inside the calendar
     const calendarContainer = document.getElementById('calendar-container');
     if (calendarContainer) {
         calendarContainer.addEventListener('click', function(event) {
-            event.stopPropagation(); 
+            event.stopPropagation(); // Prevent this click from triggering the outside click handler
         });
     }
 
-    
+    // Existing code for other functionalities
     const tabLinks = document.querySelectorAll('.tab-links');
     const tabContents = document.querySelectorAll('.tab-contents');
 
@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
 
             this.classList.add('active-link');
-            const tabContentId = this.textContent.toLowerCase().replace(/\s+/g, '-'); 
+            const tabContentId = this.textContent.toLowerCase().replace(/\s+/g, '-'); // Replace spaces with hyphens for IDs
             const tabContent = document.getElementById(tabContentId);
             if (tabContent) {
                 tabContent.style.display = 'block';
@@ -133,3 +133,27 @@ document.addEventListener('DOMContentLoaded', function() {
         yoyo: true
     });
 });
+document.querySelectorAll('iframe').forEach(iframe => {
+    iframe.addEventListener('load', () => {
+       const style = document.createElement('style');
+       style.textContent = `
+          .date-box {
+              position: relative;
+          }
+          .date-box:before {
+              content: "";
+              position: absolute;
+              top: 0;
+              left: 0;
+              right: 0;
+              bottom: 0;
+              background-color: rgba(0, 0, 0, 0.1);
+              z-index: -1;
+          }
+          .date-box .event {
+              background-color: rgba(255, 0, 0, 0.5) !important;
+          }
+       `;
+       iframe.contentDocument.head.appendChild(style);
+    });
+ });
