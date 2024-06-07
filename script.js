@@ -13,6 +13,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
         image.style.transition = 'transform 0.3s ease';
     });
+  
+  class="click-here-button" onclick="handleClick()">
+            Availability
+         
 
  
     function handleClick() {
