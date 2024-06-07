@@ -54,6 +54,21 @@ html {
   cursor: pointer;
   z-index: 1001;
 }
+.name {
+  font-size: 25px; /* Adjust as needed for "Beach Memories" */
+  font-weight: bold;
+ 
+  /* other styles */
+}
+
+.location {
+  font-size: 16px; /* Smaller font size for the location */
+  font-weight: normal;
+  margin-top: -5px; /* Optional: space between "Beach Memories" and location */
+  color: #666;
+  font-family: "Dancing Script", cursive; /* Optional: lighter color for the location text */
+  /* other styles */
+}
 
 .line {
   width: 25px;
