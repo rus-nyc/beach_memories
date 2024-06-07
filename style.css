@@ -493,6 +493,15 @@ nav ul li a:hover::after {
   .text {
   font-size: 18px;
   }
+ #calendar-container {
+    top: 50%;
+    width: 90%;
+    padding: 10px;
+  }
+
+  #calendar-container iframe {
+    height: 500px;
+  }
   
   @media screen and (max-width: 600px) {
   .header-text {
