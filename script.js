@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-   
     function handleClick() {
         const calendar = document.getElementById('calendar-container');
         const overlay = document.getElementById('overlay');
@@ -17,7 +16,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-   
     function closeCalendar() {
         const calendar = document.getElementById('calendar-container');
         const overlay = document.getElementById('overlay');
@@ -31,7 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
         document.removeEventListener('click', handleOutsideClick);
     }
 
-   
     function handleOutsideClick(event) {
         const calendar = document.getElementById('calendar-container');
         if (!calendar.contains(event.target) && event.target !== document.querySelector('.click-here-button')) {
@@ -39,7 +36,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    
     const clickHereButton = document.querySelector('.click-here-button');
     if (clickHereButton) {
         clickHereButton.addEventListener('click', function(event) {
@@ -48,15 +44,13 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-   
     const calendarContainer = document.getElementById('calendar-container');
     if (calendarContainer) {
         calendarContainer.addEventListener('click', function(event) {
-            event.stopPropagation(); 
+            event.stopPropagation();
         });
     }
 
-    
     const tabLinks = document.querySelectorAll('.tab-links');
     const tabContents = document.querySelectorAll('.tab-contents');
 
@@ -70,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
 
             this.classList.add('active-link');
-            const tabContentId = this.textContent.toLowerCase().replace(/\s+/g, '-'); 
+            const tabContentId = this.textContent.toLowerCase().replace(/\s+/g, '-');
             const tabContent = document.getElementById(tabContentId);
             if (tabContent) {
                 tabContent.style.display = 'block';
@@ -90,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function() {
         service.addEventListener('mouseleave', () => {
             gsap.to(service, {
                 background: '#e4ebcf',
-                y: 0, 
+                y: 0,
                 duration: 0.8
             });
         });
