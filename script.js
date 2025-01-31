@@ -6,7 +6,9 @@ document.addEventListener('DOMContentLoaded', function () {
         if (calendar.style.display === 'none' || calendar.style.display === '') {
             calendar.style.display = 'block';
             overlay.style.display = 'block';
-            document.addEventListener('click', handleOutsideClick);
+
+            // Add event listener only once
+            document.body.addEventListener('click', handleOutsideClick);
         } else {
             closeCalendar();
         }
@@ -18,7 +20,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
         calendar.style.display = 'none';
         overlay.style.display = 'none';
-        document.removeEventListener('click', handleOutsideClick);
+
+        // Remove the event listener when closing
+        document.body.removeEventListener('click', handleOutsideClick);
     }
 
     function handleOutsideClick(event) {
@@ -31,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const clickHereButton = document.querySelector('.click-here-button');
     if (clickHereButton) {
         clickHereButton.addEventListener('click', function (event) {
-            event.stopPropagation();
+            event.stopPropagation(); // Prevents event bubbling
             handleClick();
         });
     }
@@ -39,13 +43,13 @@ document.addEventListener('DOMContentLoaded', function () {
     const calendarContainer = document.getElementById('calendar-container');
     if (calendarContainer) {
         calendarContainer.addEventListener('click', function (event) {
-            event.stopPropagation();
+            event.stopPropagation(); // Prevents closing when clicking inside
         });
     }
 
     const overlay = document.getElementById('overlay');
     if (overlay) {
-        overlay.addEventListener('click', closeCalendar);
+        overlay.addEventListener('click', closeCalendar); // Closes when clicking outside
     }
 
     console.log("Google Calendar script loaded successfully!");
