@@ -1,15 +1,11 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const calendar = document.getElementById('calendar-container');
-    const overlay = document.getElementById('overlay');
-    const clickHereButton = document.querySelector('.click-here-button');
-
     function handleClick() {
-        if (!calendar || !overlay) return; // Ensure elements exist
+        const calendar = document.getElementById('calendar-container');
+        const overlay = document.getElementById('overlay');
 
         if (calendar.style.display === 'none' || calendar.style.display === '') {
             calendar.style.display = 'block';
             overlay.style.display = 'block';
-            document.body.classList.add('blur');
             document.addEventListener('click', handleOutsideClick);
         } else {
             closeCalendar();
@@ -17,21 +13,22 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function closeCalendar() {
-        if (!calendar || !overlay) return;
+        const calendar = document.getElementById('calendar-container');
+        const overlay = document.getElementById('overlay');
 
         calendar.style.display = 'none';
         overlay.style.display = 'none';
-        document.body.classList.remove('blur');
         document.removeEventListener('click', handleOutsideClick);
     }
 
     function handleOutsideClick(event) {
-        if (!calendar.contains(event.target) && event.target !== clickHereButton) {
+        const calendar = document.getElementById('calendar-container');
+        if (!calendar.contains(event.target) && event.target !== document.querySelector('.click-here-button')) {
             closeCalendar();
         }
     }
 
-    // Click event for button
+    const clickHereButton = document.querySelector('.click-here-button');
     if (clickHereButton) {
         clickHereButton.addEventListener('click', function (event) {
             event.stopPropagation();
@@ -39,14 +36,14 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Prevent closing when clicking inside the calendar
-    if (calendar) {
-        calendar.addEventListener('click', function (event) {
+    const calendarContainer = document.getElementById('calendar-container');
+    if (calendarContainer) {
+        calendarContainer.addEventListener('click', function (event) {
             event.stopPropagation();
         });
     }
 
-    // Click event for overlay to close the calendar
+    const overlay = document.getElementById('overlay');
     if (overlay) {
         overlay.addEventListener('click', closeCalendar);
     }
