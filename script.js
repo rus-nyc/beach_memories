@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
             calendar.style.display = 'block';
             overlay.style.display = 'block';
 
-            // Add event listener only once
+           
             document.body.addEventListener('click', handleOutsideClick);
         } else {
             closeCalendar();
@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function () {
         calendar.style.display = 'none';
         overlay.style.display = 'none';
 
-        // Remove the event listener when closing
+   
         document.body.removeEventListener('click', handleOutsideClick);
     }
 
@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const clickHereButton = document.querySelector('.click-here-button');
     if (clickHereButton) {
         clickHereButton.addEventListener('click', function (event) {
-            event.stopPropagation(); // Prevents event bubbling
+            event.stopPropagation(); 
             handleClick();
         });
     }
@@ -43,35 +43,38 @@ document.addEventListener('DOMContentLoaded', function () {
     const calendarContainer = document.getElementById('calendar-container');
     if (calendarContainer) {
         calendarContainer.addEventListener('click', function (event) {
-            event.stopPropagation(); // Prevents closing when clicking inside
+            event.stopPropagation(); 
         });
     }
 
     const overlay = document.getElementById('overlay');
     if (overlay) {
-        overlay.addEventListener('click', closeCalendar); // Closes when clicking outside
+        overlay.addEventListener('click', closeCalendar); 
     }
 
     console.log("Google Calendar script loaded successfully!");
 });
 
-// TAB SWITCHING FUNCTIONALITY (SAFE TO ADD)
 document.addEventListener("DOMContentLoaded", function () {
   const tabLinks = document.querySelectorAll(".tab-links");
   const tabContents = document.querySelectorAll(".tab-contents");
 
-  function openTab(index) {
-    tabLinks.forEach(link => link.classList.remove('active-link'));
-    tabContents.forEach(content => content.style.display = 'none');
-    tabLinks[index].classList.add('active-link');
-    tabContents[index].style.display = 'block';
+  function toggleTab(index) {
+    const isActive = tabLinks[index].classList.contains("active-link");
+
+   
+    tabLinks.forEach(link => link.classList.remove("active-link"));
+    tabContents.forEach(content => content.style.display = "none");
+
+ 
+    if (!isActive) {
+      tabLinks[index].classList.add("active-link");
+      tabContents[index].style.display = "block";
+    }
   }
 
-  if (tabContents.length > 0) {
-    openTab(0); // Shows first tab by default
-  }
-
+  
   tabLinks.forEach((tab, index) => {
-    tab.addEventListener("click", () => openTab(index));
+    tab.addEventListener("click", () => toggleTab(index));
   });
 });
