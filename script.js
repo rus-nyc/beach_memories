@@ -54,3 +54,24 @@ document.addEventListener('DOMContentLoaded', function () {
 
     console.log("Google Calendar script loaded successfully!");
 });
+
+// TAB SWITCHING FUNCTIONALITY (SAFE TO ADD)
+document.addEventListener("DOMContentLoaded", function () {
+  const tabLinks = document.querySelectorAll(".tab-links");
+  const tabContents = document.querySelectorAll(".tab-contents");
+
+  function openTab(index) {
+    tabLinks.forEach(link => link.classList.remove('active-link'));
+    tabContents.forEach(content => content.style.display = 'none');
+    tabLinks[index].classList.add('active-link');
+    tabContents[index].style.display = 'block';
+  }
+
+  if (tabContents.length > 0) {
+    openTab(0); // Shows first tab by default
+  }
+
+  tabLinks.forEach((tab, index) => {
+    tab.addEventListener("click", () => openTab(index));
+  });
+});
