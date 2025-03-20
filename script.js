@@ -80,12 +80,19 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-    const menuButton = document.querySelector(".navbar-toggler");
-    const menuCollapse = document.querySelector(".navbar-collapse");
+    const burger = document.getElementById("burger");
+    const navLinks = document.getElementById("nav-links");
+    const closeButton = document.querySelector(".close");
 
-    if (menuButton) {
-        menuButton.addEventListener("click", function () {
-            menuCollapse.classList.toggle("show");
+    if (burger && navLinks) {
+        burger.addEventListener("click", function () {
+            navLinks.classList.toggle("active");
+        });
+    }
+
+    if (closeButton) {
+        closeButton.addEventListener("click", function () {
+            navLinks.classList.remove("active");
         });
     }
 });

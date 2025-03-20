@@ -544,3 +544,36 @@ nav ul li a:hover::after {
   font-weight: bold;
   margin: 20px 0;
   }
+
+
+@media screen and (max-width: 800px) {
+  .burger {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    transition: all 0.3s ease;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .close {
+    display: block;
+    font-size: 34px;
+    color: white;
+    cursor: pointer;
+  }
+}
