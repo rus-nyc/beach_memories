@@ -78,3 +78,14 @@ document.addEventListener("DOMContentLoaded", function () {
     tab.addEventListener("click", () => toggleTab(index));
   });
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+    const menuButton = document.querySelector(".navbar-toggler");
+    const menuCollapse = document.querySelector(".navbar-collapse");
+
+    if (menuButton) {
+        menuButton.addEventListener("click", function () {
+            menuCollapse.classList.toggle("show");
+        });
+    }
+});
